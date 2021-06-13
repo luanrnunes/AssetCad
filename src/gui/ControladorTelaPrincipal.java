@@ -3,6 +3,7 @@ package gui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.function.Consumer;
 
 import application.Main;
 import gui.util.Alerts;
@@ -15,6 +16,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
+import model.services.RelacaoCliente;
 
 public class ControladorTelaPrincipal implements Initializable {
 	
@@ -27,8 +29,9 @@ public class ControladorTelaPrincipal implements Initializable {
 	
 	@FXML
 	public void onMenuItemClientesAction() {
-		loadView("/gui/ListaClientes.fxml");
-		
+		loadView("/gui/ListaClientes.fxml", (ControladorListaPatrimonios controller) -> {controller.setRelacaoCliente (new RelacaoCliente());
+		controller.updateTableView();
+		});
 	}
 	
 	@FXML
@@ -37,20 +40,24 @@ public class ControladorTelaPrincipal implements Initializable {
 		
 	}
 	
+	
+	//Tela about carrega função nula. O redirecionamento pro git estava com problemas
+	//removi, dispensável. Luan.
+	
 	@FXML
 	public void onMenuItemClientesSobre() {
-		loadView("/gui/Sobre.fxml");
+		loadView("/gui/Sobre.fxml", e -> {});
 		
 	}
 
 
 
 	@Override
-	public void initialize(URL uri, ResourceBundle rb) {
+	public void initialize(URL url, ResourceBundle rb) {
 		
 	}
 	
-	private void loadView(String absoluteName) {
+	private <T> void loadView(String absoluteName, Consumer<T> initializingAction) {
 		
 		try {
 			
@@ -65,6 +72,12 @@ public class ControladorTelaPrincipal implements Initializable {
 		mainVBox.getChildren().add(mainMenu);
 		mainVBox.getChildren().addAll(newVBox.getChildren());
 		
+		//Inicializa a função como argumento da lista. Precisa verificar;
+		//Luan.
+		
+		T controller = loader.getController();
+		initializingAction.accept(controller);
+		
 		
 		}
 		catch (IOException e) {
@@ -72,5 +85,7 @@ public class ControladorTelaPrincipal implements Initializable {
 		}
 		
 	}
+	
+	
 
 }

@@ -1,10 +1,12 @@
 package gui;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import application.Main;
-import javafx.beans.property.Property;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -13,8 +15,11 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.entities.Department;
+import model.services.RelacaoCliente;
 
 public class ControladorListaPatrimonios implements Initializable {
+	
+	private RelacaoCliente RCliente;
 	
 	@FXML
 	private TableView<Department> tableViewDepartment;
@@ -25,12 +30,19 @@ public class ControladorListaPatrimonios implements Initializable {
 	@FXML
 	private TableColumn<Department, String> tableColumnName;
 	
+	private ObservableList<Department> obsList;
+	
 	@FXML 
 	private Button btNovo;
 	
 	@FXML
 	public void onBtNewAction() {
 		System.out.println("ClickTeste");
+	}
+	
+	public void setRelacaoCliente(RelacaoCliente RCliente)
+	{
+		this.RCliente = RCliente;
 	}
 	
 	
@@ -51,6 +63,16 @@ public class ControladorListaPatrimonios implements Initializable {
 		Stage stage = (Stage) Main.getMainScene().getWindow();
 		tableViewDepartment.prefHeightProperty().bind(stage.heightProperty());
 		
+	}
+	public void updateTableView()
+	{
+		if (RCliente == null)
+		{
+			throw new IllegalStateException("Cliente não pode ser nulo!");
+		}
+		List <Department> list = RCliente.findAll();
+		obsList = FXCollections.observableArrayList(list);
+		tableViewDepartment.setItems(obsList);
 	}
 	
 	}
