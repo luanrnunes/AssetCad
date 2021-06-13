@@ -27,7 +27,7 @@ public class ControladorTelaPrincipal implements Initializable {
 	
 	@FXML
 	public void onMenuItemClientesAction() {
-		System.out.println("TesteC");
+		loadView("/gui/ListaClientes.fxml");
 		
 	}
 	
