@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<VBox prefHeight="246.0" prefWidth="333.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/16">
+   <children>
+      <Label text="AssetCad">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+         <padding>
+            <Insets bottom="5.0" left="15.0" top="5.0" />
+         </padding>
+      </Label>
+      <Label text="Software para controle de ativos em locação">
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+      </Label>
+      <Label prefHeight="59.0" prefWidth="197.0" text="2021. Unisociesc (projeto)">
+         <padding>
+            <Insets bottom="10.0" left="15.0" right="10.0" top="20.0" />
+         </padding>
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <Label text="Joinville/SC">
+         <VBox.margin>
+            <Insets left="15.0" />
+         </VBox.margin>
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </Label>
+      <Label text="Programação de Soluções Computacionais">
+         <padding>
+            <Insets left="15.0" top="10.0" />
+         </padding>
+      </Label>
+      <Label text="Desenvolvido pelos estudantes:">
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Label>
+      <Label text="Luan Roberto Nunes">
+         <VBox.margin>
+            <Insets left="15.0" />
+         </VBox.margin>
+         <padding>
+            <Insets top="5.0" />
+         </padding>
+      </Label>
+      <Label text="Guilherme Espindola">
+         <padding>
+            <Insets left="15.0" />
+         </padding>
+      </Label>
+   </children>
+</VBox>
