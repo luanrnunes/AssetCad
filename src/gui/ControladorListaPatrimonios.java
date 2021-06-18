@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import application.Main;
+import gui.listeners.DataChangeListener;
 import gui.util.Alerts;
 import gui.util.Utils;
 import javafx.collections.FXCollections;
@@ -26,7 +27,7 @@ import javafx.stage.Stage;
 import model.entities.Department;
 import model.services.RelacaoCliente;
 
-public class ControladorListaPatrimonios implements Initializable {
+public class ControladorListaPatrimonios implements Initializable, DataChangeListener {
 	
 	private RelacaoCliente RCliente;
 	
@@ -97,6 +98,8 @@ public class ControladorListaPatrimonios implements Initializable {
 			
 			ControladorFormCliente controller = loader.getController();
 			controller.setDepartment(obj);
+			controller.setRelacaoCliente(new RelacaoCliente());
+			controller.subscribeDataChangeListener(this);
 			controller.updateFormData();
 			
 			Stage dialogStage = new Stage();
@@ -112,6 +115,15 @@ public class ControladorListaPatrimonios implements Initializable {
 		Alerts.showAlert("Erro de IO", "Falha ao carrega a tela", e.getMessage(), AlertType.ERROR);
 	}
 	
+	}
+
+	//Metodo será executado quando houver alteração na base, e enviará
+	//a mensagem para o listener do FormCliente. Luan.
+	
+	@Override
+	public void onDataChanged() {
+		updateTableView();
+		
 	}
 }
 
