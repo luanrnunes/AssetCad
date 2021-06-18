@@ -23,4 +23,10 @@ public class RelacaoCliente {
 			dao.update(obj);
 		}
 	}
+
+
+public void remove(Department obj)
+{
+	dao.deleteById(obj.getId());
+}
 }

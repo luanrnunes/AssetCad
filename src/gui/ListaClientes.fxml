@@ -27,6 +27,8 @@
         <columns>
           <TableColumn fx:id="tableColumnId" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="tableColumnName" prefWidth="75.0" text="Cliente" />
+            <TableColumn fx:id="tableColumnUpdate" prefWidth="75.0" />
+            <TableColumn fx:id="tableColumnRemover" prefWidth="75.0" />
         </columns>
       </TableView>
     <Button fx:id="btNovo" mnemonicParsing="false" onAction="#onBtNewAction" scaleX="1.1" scaleY="1.1" text="Novo">
